@@ -1,14 +1,15 @@
+using System.Text.Json;
+
 namespace CookiesCookbook.DataAccess;
 
-public abstract class StringsRepository : IStringsRepository
+public class StringJsonRepository : IStringsRepository
 {
-    private static readonly string Separator = Environment.NewLine;
     public List<string> Read(string filePath)
     {
         if (File.Exists(filePath))
         {
             var fileContents = File.ReadAllText(filePath);
-            return fileContents.Split(Separator).ToList();   
+            return JsonSerializer.Deserialize<List<string>>(fileContents);   
         }
 
         return new List<string>();
@@ -16,6 +17,6 @@ public abstract class StringsRepository : IStringsRepository
 
     public void Write(string filePath, List<string> strings)
     {
-        File.WriteAllText(filePath, string.Join(Separator, strings));
+        File.WriteAllText(filePath, JsonSerializer.Serialize(strings));
     }
 }
