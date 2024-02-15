@@ -4,4 +4,4 @@ using CookiesCookbook.Recipes;
 
 var cookiesRecipiesApp = new CookiesRecipesApp(
     new RecipesRepository(), new RecipesConsoleUserInteraction());
-cookiesRecipiesApp.Run();
+cookiesRecipiesApp.Run("recipes.txt");

@@ -1,22 +1,9 @@
+using CookiesCookbook.Recipes;
+
 namespace CookiesCookbook.App;
 
 public class RecipesConsoleUserInteraction : IRecipesUserInteraction
 {
-    public void PrintExistingRecipes(string allRecipes)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void PromptToCreateRecipe()
-    {
-        throw new NotImplementedException();
-    }
-
-    public object ReadIngredientsFromUser()
-    {
-        throw new NotImplementedException();
-    }
-
     public void ShowMessage(string message)
     {
         Console.WriteLine(message);
@@ -26,5 +13,22 @@ public class RecipesConsoleUserInteraction : IRecipesUserInteraction
     {
         Console.WriteLine("Press any key to close.");
         Console.ReadKey();
+    }
+
+    public void PrintExistingRecipes(IEnumerable<Recipe> allRecipes)
+    {
+        if (allRecipes.Any())
+        {
+            Console.WriteLine($"Existing recipes are: {Environment.NewLine}");
+
+            var counter = 1;
+            foreach (var recipe in allRecipes)
+            {
+                Console.WriteLine($"******{counter}*******");
+                Console.WriteLine(recipe);
+                Console.WriteLine();
+                ++counter;
+            }
+        }
     }
 }

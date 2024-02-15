@@ -1,9 +1,25 @@
+using CookiesCookbook.Recipes.Ingredients;
+
 namespace CookiesCookbook.Recipes;
 
 public class RecipesRepository : IRecipesRepository
 {
-    public string Read(string filePath)
+    public List<Recipe> Read(string filePath)
     {
-        throw new NotImplementedException();
+        return new List<Recipe>()
+        {
+            new Recipe(new List<Ingredient>()
+            {
+                new WheatFlour(),
+                new Butter(),
+                new Sugar()
+            }),
+            new Recipe(new List<Ingredient>()
+            {
+                new CocoaPowder(),
+                new SpeltFlour(),
+                new Cinnamom()
+            })
+        };
     }
 }
