@@ -1,6 +1,6 @@
 namespace CookiesCookbook.Recipes.Ingredients;
 
-public class IngredientsRegister
+public class IngredientsRegister : IIngredientsRegister
 {
     public IEnumerable<Ingredient> All { get; } = new List<Ingredient>()
     {
@@ -16,11 +16,6 @@ public class IngredientsRegister
 
     public Ingredient GetById(int id)
     {
-        foreach (var ingredient in All)
-        {
-            if (ingredient.Id == id) return ingredient;
-        }
-
-        return null;
+        return All.FirstOrDefault(ingredient => ingredient.Id == id);
     }
 }

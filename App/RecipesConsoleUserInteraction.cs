@@ -5,9 +5,9 @@ namespace CookiesCookbook.App;
 
 public class RecipesConsoleUserInteraction : IRecipesUserInteraction
 {
-    private readonly IngredientsRegister _ingredientsRegister;
+    private readonly IIngredientsRegister _ingredientsRegister;
 
-    public RecipesConsoleUserInteraction(IngredientsRegister ingredientsRegister)
+    public RecipesConsoleUserInteraction(IIngredientsRegister ingredientsRegister)
     {
         _ingredientsRegister = ingredientsRegister;
     }
