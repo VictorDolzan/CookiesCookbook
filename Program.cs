@@ -1,3 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using CookiesCookbook;
+using CookiesCookbook.App;
+using CookiesCookbook.Recipes;
 
-Console.WriteLine("Hello, World!");
+var cookiesRecipiesApp = new CookiesRecipesApp(
+    new RecipesRepository(), new RecipesConsoleUserInteraction());
+cookiesRecipiesApp.Run();

@@ -7,4 +7,16 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Compile Remove="App\Recipies\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="App\Recipies\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="App\Recipies\**" />
+    </ItemGroup>
+
 </Project>
