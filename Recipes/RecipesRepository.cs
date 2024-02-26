@@ -14,19 +14,13 @@ public class RecipesRepository : IRecipesRepository
         _stringsRepository = stringsRepository;
         _ingredientsRegister = ingredientsRegister;
     }
-    
+
     public List<Recipe> Read(string filePath)
     {
-        var recipesFromFile = _stringsRepository.Read(filePath);
-        var recipes = new List<Recipe>();
-
-        foreach (var recipeFromFile in recipesFromFile)
-        {
-            var recipe = RecipeFromString(recipeFromFile);
-            recipes.Add(recipe);
-        }
-        
-        return recipes;
+        return _stringsRepository
+            .Read(filePath)
+            .Select(RecipeFromString)
+            .ToList();
     }
 
     private Recipe RecipeFromString(string recipeFromFile)
@@ -40,7 +34,7 @@ public class RecipesRepository : IRecipesRepository
             var ingredient = _ingredientsRegister.GetById(id);
             ingredients.Add(ingredient);
         }
-        
+
         return new Recipe(ingredients);
     }
 
