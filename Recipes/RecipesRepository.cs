@@ -25,15 +25,9 @@ public class RecipesRepository : IRecipesRepository
 
     private Recipe RecipeFromString(string recipeFromFile)
     {
-        var textualIds = recipeFromFile.Split(Separator);
-        var ingredients = new List<Ingredient>();
-
-        foreach (var textualId in textualIds)
-        {
-            var id = int.Parse(textualId);
-            var ingredient = _ingredientsRegister.GetById(id);
-            ingredients.Add(ingredient);
-        }
+        var ingredients = recipeFromFile.Split(Separator)
+            .Select(int.Parse)
+            .Select(_ingredientsRegister.GetById);
 
         return new Recipe(ingredients);
     }
